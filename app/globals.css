@@ -1,0 +1,151 @@
+/* Import Tailwind base styles */
+@import "tailwindcss";
+
+/* Define CSS custom properties (variables) for colors */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --charcoal: #203f4a;
+  --sky: #82b7c4;
+}
+
+/* Theme variables using CSS custom properties,
+   can be overridden or referenced in styles */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-charcoal: var(--charcoal);
+  --color-sky: var(--sky);
+  --font-sans: "Marianne", sans-serif; /* Body font */
+  --font-headings: "Caviar Dreams", sans-serif; /* Headings font */
+  --font-mono: var(--font-geist-mono); /* Geist Mono variable, likely from JS */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a; /* Dark background */
+    --foreground: #ededed; /* Light foreground text */
+  }
+}
+
+/* --- Custom font faces declarations for Caviar Dreams (TTF) --- */
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/caviar_dreams/CaviarDreams.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/caviar_dreams/CaviarDreams_Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/caviar_dreams/CaviarDreams_Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/fonts/caviar_dreams/CaviarDreams_BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* --- Custom font faces declarations for Marianne (OTF) --- */
+@font-face {
+  font-family: "Marianne";
+  src: url("/fonts/marianne/Marianne-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Marianne";
+  src: url("/fonts/marianne/Marianne-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Marianne";
+  src: url("/fonts/marianne/Marianne-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Marianne";
+  src: url("/fonts/marianne/Marianne-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* --- Global styles for html and body --- */
+html,
+body {
+  height: 100%; /* full viewport height */
+  overflow-x: hidden; /* prevent horizontal scroll */
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none; /* disable overscroll effects */
+}
+
+body {
+  background: var(--background); /* background color variable */
+  color: var(--foreground); /* text color variable */
+  font-family: var(--font-sans); /* body font */
+}
+
+/* Headings (h1–h6) use the headings font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  margin: 0; /* remove default margin */
+}
+
+/* Text selection highlight style */
+::selection {
+  background-color: #203f4a; /* charcoal blue */
+  color: white;
+}
+
+/* Tailwind utility helpers for fonts (optional) */
+.font-headings {
+  font-family: var(--font-headings);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Lenis smooth scrolling integration styles */
+/* When lenis smooth scrolling is active, height is auto */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+/* Disable browser's native smooth scroll when using lenis */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Prevent overscroll on elements marked with data-lenis-prevent */
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* When lenis is stopped, hide overflow to disable scrolling */
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Disable pointer events on iframes during lenis smooth scroll */
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
