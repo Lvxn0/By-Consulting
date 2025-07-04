@@ -12,3 +12,8 @@ create a github repo
 clone this repo and push it into your repo
 then on vercel, deploy using your own repo
 simple as that, more detailed instructions can be found with chatgpt :)
+
+FromSpree login:
+mail: yassine@byconsulting.co
+pwd: 8IrVUnFJFciL5s!
+
